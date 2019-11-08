@@ -6,5 +6,8 @@ package com.company;
  */
 public class Person {
     private int id;
-    private String ss;
+    private String address;
+    private String name;
+    private int age;
+
 }
