@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/SpringCode" />
     <file type="web" url="file://$PROJECT_DIR$/SsM" />
   </component>
   <component name="MavenProjectsManager">
@@ -8,6 +9,7 @@
       <list>
         <option value="$PROJECT_DIR$/summer/pom.xml" />
         <option value="$PROJECT_DIR$/SsmTest/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringCode/pom.xml" />
       </list>
     </option>
   </component>

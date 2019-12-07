@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="summer" />
         <module name="SSMTest2" />
+        <module name="SpringCode" />
+        <module name="summer" />
         <module name="SsmTest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="SpringCode" target="1.8" />
       <module name="SsM" target="1.8" />
       <module name="SsmTest" target="1.8" />
       <module name="SSMTest2" target="1.8" />

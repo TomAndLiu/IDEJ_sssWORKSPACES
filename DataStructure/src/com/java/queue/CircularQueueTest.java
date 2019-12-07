@@ -6,7 +6,18 @@ package com.java.queue;
  */
 public class CircularQueueTest {
     public static void main(String[] args) {
-        ArrayCircularQueue arrayCircularQueue = new ArrayCircularQueue(5);
+        /*ArrayCircularQueue arrayCircularQueue = new ArrayCircularQueue(5);
+        arrayCircularQueue.addComponent(16);
+        arrayCircularQueue.addComponent(8);
+        arrayCircularQueue.addComponent(11);
+        arrayCircularQueue.addComponent(12);
+        System.out.println(arrayCircularQueue.getComponent());
+        System.out.println(arrayCircularQueue.getComponent());
+        System.out.println(arrayCircularQueue.getComponent());
+        System.out.println(arrayCircularQueue.getComponent());
+        arrayCircularQueue.addComponent(18);
+        System.out.println(arrayCircularQueue.getComponent());*/
+        MyArrayCircularQueue arrayCircularQueue = new MyArrayCircularQueue(5);
         arrayCircularQueue.addComponent(16);
         arrayCircularQueue.addComponent(8);
         arrayCircularQueue.addComponent(11);
@@ -135,8 +146,8 @@ class MyArrayCircularQueue{
         arr=new int[maxSize];
 //      头部front下标指向0
         front=0;
-//      尾部rear下标指向-1
-        rear=-1;
+//      尾部rear下标指向0
+        rear=0;
     }
     public int getMaxSize() {
         return maxSize;
@@ -179,13 +190,14 @@ class MyArrayCircularQueue{
     //  队列添加
     public void addComponent(int num) {
 //      如果队列满了
-        if(isFull()){
+        if(isFull()) {
             System.out.println("队列已满,不能加入数据");
             return;
         }
-        //尾部指针后移一位
-        rear++;
+//      先插进数据
         arr[rear]=num;
+//      尾部指针后移一位
+        rear++;
     }
     //  获取队列数据
     public int getComponent(){
@@ -193,9 +205,11 @@ class MyArrayCircularQueue{
         if(isEmpty()){
             throw new RuntimeException("队列是空的,无法取出数据");
         }
+//      定义一个临时变量来存储头部信息
+        int value=arr[front];
 //      头部指针后移一位
         front++;
-        return arr[front];
+        return value;
     }
     //  显示头数据
     public int getHead(){
@@ -203,7 +217,7 @@ class MyArrayCircularQueue{
         if(isEmpty()){
             throw new RuntimeException("队列是空的,无法取出数据");
         }
-        return arr[front+1];
+        return arr[front];
     }
     //  显示完整队列数据
     public void showQueue(){
@@ -212,9 +226,13 @@ class MyArrayCircularQueue{
             System.out.println("队列为空");
             return;
         }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%d\t",arr[i]);
+        for (int i =front; i < front+size(); i++) {
+            System.out.printf("%d\t",arr[i%maxSize]);
         }
+    }
+//  获取有效数据的个数
+    public int size(){
+        return (rear-front+maxSize)%maxSize;
     }
 }
 
