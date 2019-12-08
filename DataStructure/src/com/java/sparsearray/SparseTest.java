@@ -4,7 +4,7 @@ package com.java.sparsearray;
  * @author liusigou
  * @create 2019--11--10--13:56
  */
-public class SparseTest {
+public class SparseTest{
     public static void main(String[] args) {
 //        创立一个11行11列的数组 0表示没有 1表示黑子 2表示白子
         int[][] chessArray=new int[11][11];
