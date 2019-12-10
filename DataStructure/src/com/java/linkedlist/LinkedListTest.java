@@ -1,5 +1,5 @@
 package com.java.linkedlist;
-
+import java.util.Stack;
 /**
  * @author liusigou
  * @create 2019--11--11--9:53
@@ -12,6 +12,7 @@ public class LinkedListTest {
         HeroNode heroNode4=new HeroNode(4,"林冲","豹子头");
         HeroNode heroNode9=new HeroNode(9,"西门庆","小淫驴");
         SingleLinedList list=new SingleLinedList();
+
         /*list.addHero(heroNode1);
         list.addHero(heroNode2);
         list.addHero(heroNode3);
@@ -24,9 +25,11 @@ public class LinkedListTest {
         /*HeroNode heroNode5=new HeroNode(4,"林冲","龟头");
         list.alterHeroNode(heroNode5);*/
         list.list();
-        System.out.println("-------------------");
+        /*System.out.println("-------------------");
         list.reverseList();
-        list.list();
+        list.list();*/
+        System.out.println("-------------------");
+        list.reversePrint(list.getHead());
         /*System.out.println("------------------");
         list.deleteHeroNode(heroNode3);
         list.list();*/
@@ -43,6 +46,15 @@ public class LinkedListTest {
 class SingleLinedList{
     //建议一个头结点
     private HeroNode head;
+
+    public HeroNode getHead() {
+        return head;
+    }
+
+    public void setHead(HeroNode head) {
+        this.head = head;
+    }
+
     public SingleLinedList(){
         head=new HeroNode();
     }
@@ -232,6 +244,56 @@ class SingleLinedList{
             temp=next;
         }
         head.setNext(reverseHead.getNext());
+    }
+    //利用栈的特点实现逆序打印
+    public void reversePrint(HeroNode head){
+        //如果头结点的next为空,说明是空链表
+        if(head.getNext()==null){
+            System.out.println("该链表为空,无法打印");
+            return;
+        }
+        //定义遍历节点
+        HeroNode current=head;
+        //定义一个栈接收数据
+        Stack<HeroNode> stack=new Stack();
+        while(current.getNext()!=null){
+            current=current.getNext();
+            stack.add(current);
+        }
+        //把栈里面的数据打印出来
+        while(stack.size()>0){
+            System.out.println(stack.pop());
+        }
+    }
+    //合并两个有序链表,合并后还是有效
+    public void combineLinked(HeroNode head1,HeroNode head2){
+        //如果两个都是空链表
+        if(head1.getNext()==null&&head2.getNext()==null){
+            System.out.println("不能合并两个空链表");
+        }
+        //如果是第一个是空链表
+        if(head1.getNext()==null){
+            //定义遍历指针
+            HeroNode current=head2;
+            while(current.getNext()!=null){
+                current=current.getNext();
+                System.out.println(current);
+            }
+            return;
+        }
+        //如果是第二个是空链表
+        if(head2.getNext()==null){
+            //定义遍历指针
+            HeroNode current=head1;
+            while(current.getNext()!=null){
+                current=current.getNext();
+                System.out.println(current);
+            }
+            return;
+        }
+        //都是有值的列表
+        //判断两个链表的第一个值谁大
+
     }
 }
 //定义英雄节点
