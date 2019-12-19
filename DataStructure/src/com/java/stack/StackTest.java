@@ -6,7 +6,7 @@ package com.java.stack;
  */
 public class StackTest {
     public static void main(String[] args) {
-        Stack stack = new Stack(10);
+        MyStack stack = new MyStack(10);
         for (int i = 0; i < 10; i++) {
             stack.addNum(i);
         }
@@ -16,7 +16,7 @@ public class StackTest {
     }
 }
 //创建栈
-class Stack{
+class MyStack {
     //定义一个数组来模拟栈
     private int[] stack;
     //定义栈最大长度
@@ -24,12 +24,12 @@ class Stack{
     //定义一个指针,来指向栈顶
     private int top=-1;
 
-    public Stack(int maxSize) {
+    public MyStack(int maxSize) {
         this.maxSize = maxSize;
         stack=new int[maxSize];
     }
 
-    
+
 
     public int[] getStack() {
         return stack;
